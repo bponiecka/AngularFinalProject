@@ -1,7 +1,7 @@
 <div class="col-md-12 well text-center">
     <div class="input-group input-group-lg">
       <input 
-        ng-model="github.selectedUser" 
+        ng-model="tabController.selectedUser" 
         type="text" 
         class="form-control text-center" 
         placeholder="Login"
@@ -11,8 +11,8 @@
         <button 
           class="btn btn-info" 
           type="button" 
-          ui-sref="github({user: github.selectedUser})">Search!</button>
+          ui-sref="home({user: tabController.selectedUser})">Search!</button>
       </span>
-     
     </div>
+    
 </div>
