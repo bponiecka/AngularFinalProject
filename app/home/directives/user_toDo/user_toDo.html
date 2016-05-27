@@ -23,6 +23,9 @@
 <footer>
     <input id="toggle-all" ng-model="isAllMarked" type="checkbox" ng-click="tabController.markAll(isAllMarked)">
     <ul id="filters">
+                        <li>
+							<a ng-click="tabController.clearAllCompleted()">Close Completed</a>
+						</li>
 						<li>
 							<a ng-click="tabController.onChangeStatus('')">All</a>
 						</li>

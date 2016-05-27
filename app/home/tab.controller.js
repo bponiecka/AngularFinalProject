@@ -46,15 +46,31 @@ export default class TabController{
         this.ToDoService.edit(todo);
     }
     
+    clearAllCompleted()
+    {
+        for(var i=0;i<this.todos.length;i++)
+        {
+            if(this.canProcessElement(this.todos[i]) && this.todos[i].completed == true)
+            {
+                this.removeTodo(this.todos[i]);
+            }
+        }
+    }
+    
     markAll(isChecked)
     {
         for(var i=0;i<this.todos.length;i++)
         {
-            if(this.todos[i].user == this.user)
+            if(this.canProcessElement(this.todos[i]))
             {
                 this.todos[i].completed = isChecked;
             }
         }
+    }
+    
+    canProcessElement(toDo)
+    {
+        return toDo.user == this.user;
     }
     
     removeTodo(toDo)
