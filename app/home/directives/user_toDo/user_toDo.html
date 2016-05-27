@@ -6,20 +6,22 @@
     </header>    
     
     <section>
-        <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
-                            <li ng-repeat="todo in tabController.todos">
+                            <li ng-repeat="todo in tabController.todos | filter:tabController.statusFilter" class="list-group">
+                                <div class="list-group-item">
     								<input data-toggle="toggle" ng-show="todo.user == tabController.user" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
     								<span ng-hide="todo == tabController.editingToDo" ng-dblclick="tabController.editTodo(todo)">{{todo.title}}</span>
     								<form ng-submit="tabController.doneEditing(todo)">
     							    	<input ng-show="todo == tabController.editingToDo" ng-model="todo.title" ng-blur="tabController.doneEditing(todo)" autofocus />
     							    </form>
-    							    <span>{{todo.value.user}}</span>
+    							    <span>{{todo.user}}</span>
     								<button class="destroy" ng-show="todo.user == tabController.user" ng-click="tabController.removeTodo(todo)">Destroy</button>
-    						</li>
+    							</div>
+    	                    </li>
+    	                    
     </section>
-    
 </section>
 <footer>
+    <input id="toggle-all" ng-model="isAllMarked" type="checkbox" ng-click="tabController.markAll(isAllMarked)">
     <ul id="filters">
 						<li>
 							<a ng-click="tabController.onChangeStatus('')">All</a>

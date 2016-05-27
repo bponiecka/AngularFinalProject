@@ -46,6 +46,17 @@ export default class TabController{
         this.ToDoService.edit(todo);
     }
     
+    markAll(isChecked)
+    {
+        for(var i=0;i<this.todos.length;i++)
+        {
+            if(this.todos[i].user == this.user)
+            {
+                this.todos[i].completed = isChecked;
+            }
+        }
+    }
+    
     removeTodo(toDo)
     {
         this.ToDoService.remove(toDo);
