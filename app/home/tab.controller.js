@@ -1,27 +1,28 @@
+/*global Firebase */
 export default class TabController{
-    constructor($scope,$stateParams){
+    constructor($scope,$stateParams,$firebaseObject, ToDoService){
         this.todos = [];
         this.user = $stateParams.user;
-        this.todos.push({
-            value:{
-                user: "anna",
-                title: "test",
-                completed:false
-            },
-            editing: false
-        });
-    }
+        this.data = ToDoService.getAll();
+        this.ToDoService = ToDoService;
+    }   
+    
     
     addTodo()
     {
-        this.todos.push({
+        this.ToDoService.add({
+                user: this.user,
+                title: this.userText,
+                completed:false
+            });
+        /*this.todos.push({
             value:{
                 user: this.user,
                 title: this.userText,
                 completed:false
             },
             editing: false
-        });
+        });*/
     }
     
     

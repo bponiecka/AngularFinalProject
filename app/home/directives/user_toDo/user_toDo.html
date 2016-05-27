@@ -13,6 +13,7 @@
     								<form ng-submit="tabController.doneEditing(todo)">
     							    	<input ng-show="todo.editing" ng-model="todo.value.title" ng-blur="tabController.doneEditing(todo)" autofocus />
     							    </form>
+    							    <span>{{todo.value.user}}</span>
     								<button class="destroy" ng-show="todo.value.user == tabController.user" ng-click="tabController.removeTodo(todo)">Destroy</button>
     						</li>
     </section>
