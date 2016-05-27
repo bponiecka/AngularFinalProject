@@ -2,6 +2,14 @@ export default class TabController{
     constructor($scope,$stateParams){
         this.todos = [];
         this.user = $stateParams.user;
+        this.todos.push({
+            value:{
+                user: "anna",
+                title: "test",
+                completed:false
+            },
+            editing: false
+        });
     }
     
     addTodo()
@@ -15,6 +23,7 @@ export default class TabController{
             editing: false
         });
     }
+    
     
     onUser()
     {
