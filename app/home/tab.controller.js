@@ -1,11 +1,10 @@
-/*global Firebase */
 export default class TabController{
     constructor($scope,$stateParams,$firebaseObject, ToDoService){
         this.user = $stateParams.user;
         this.todos = ToDoService.getAll();
         this.ToDoService = ToDoService;
         this.editingToDo = null;
-        console.log(this.todos);
+        this.userFilter = {};
     }   
     
     
@@ -28,12 +27,25 @@ export default class TabController{
         this.selectedTab = 'all';
     }
     
+    onChangeTab(userTab)
+    {
+        if(userTab == 'all')
+        {
+            this.userFilter = {};
+        }
+        else
+        {
+            this.userFilter = {user: this.user};
+        }
+    }
+    
     onChangeStatus(status)
     {
         this.statusFilter = (status === 'active') ?
 				{ completed: false } : (status === 'completed') ?
-				{ completed: true } : {};
+				{ completed: true} : {};
     }
+
     
     editTodo(todo)
     {

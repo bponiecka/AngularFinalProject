@@ -2,11 +2,21 @@
     <header>
         <form id="todo-form" ng-submit="tabController.addTodo()">
         	<input id="new-todo" class="form-control text-center"  placeholder="What needs to be done?" ng-model="tabController.userText" ng-disabled="saving" />
-        </form>    
+        </form> 
+        
+         <ul id="filters">
+                        <li>
+							<a ng-click="tabController.onChangeTab('user')">User</a>
+						</li>
+						<li>
+							<a ng-click="tabController.onChangeTab('all')">All</a>
+						</li>
+        </ul>
+        
     </header>    
     
     <section>
-                            <li ng-repeat="todo in tabController.todos | filter:tabController.statusFilter" class="list-group">
+                            <li ng-repeat="todo in tabController.todos | filter:tabController.statusFilter | filter:tabController.userFilter" class="list-group">
                                 <div class="list-group-item">
     								<input data-toggle="toggle" ng-show="todo.user == tabController.user" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
     								<span ng-hide="todo == tabController.editingToDo" ng-dblclick="tabController.editTodo(todo)">{{todo.title}}</span>
