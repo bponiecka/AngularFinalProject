@@ -8,9 +8,12 @@ export default class TabController{
     addTodo()
     {
         this.todos.push({
-            user: this.user,
-            title: this.userText,
-            completed:false
+            value:{
+                user: this.user,
+                title: this.userText,
+                completed:false
+            },
+            editing: false
         });
     }
     
@@ -22,6 +25,17 @@ export default class TabController{
     onAll()
     {
         this.selectedTab = 'all';
+    }
+    
+    editTodo(todo)
+    {
+        todo.editing = !todo.editing;
+        this.originalToDo = todo;
+    }
+    
+    doneEditing(todo)
+    {
+        todo.editing = !todo.editing;
     }
     
     removeTodo(toDo)
